@@ -74,8 +74,8 @@ async function seedDatabase() {
     if (existingOwner.rows.length === 0) {
       const hashedOwnerPassword = await bcrypt.hash(testOwnerPassword, 10);
       await pool.query(
-        "INSERT INTO Venue_Owner (first_name, last_name, username, password) VALUES ($1, $2, $3, $4)",
-        ["Test", "Owner", testOwnerUsername, hashedOwnerPassword]
+        "INSERT INTO Venue_Owner (first_name, last_name, username, password, card_number) VALUES ($1, $2, $3, $4, $5)",
+        ["Test", "Owner", testOwnerUsername, hashedOwnerPassword, "0000-0000-0000-0000"]
       );
       console.log("✅ Test Owner yaratildi:");
       console.log(`   Username: ${testOwnerUsername}`);
